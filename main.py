@@ -13,9 +13,11 @@ def main(args):
         args.directory = os.getcwd()
 
     with open(args.yaml) as f:
+        #open yaml file for filters
         yaml_data = yaml.load(f, Loader=SafeLoader)
 
     with open(args.ifile) as input_file:
+        #open json file and iterate through all json objects
         data = json.load(input_file)
         i = 0
         while(i < len(data)):
@@ -37,41 +39,54 @@ def get_path(dict_input, values, prepath=""):
     Function recursively looks through dictionary for first hit of any value in the value list, when found will return a list with the path in x[0] and the value found in x[1]
     In the main() function -> this will write out the 
     '''
-    for key, v in dict_input.items():
-        path = prepath + f".{key}"
-        if v in values:
-            return [path, v]
-        elif type(v) is dict or type(v) is list:
-            if type(v) is list:
-                #have to check if each value in list is not another nested list or dict, enumerate over the objects send lists and dicts through recursively
-                for index, value in enumerate(v):
-                    if type(v[index]) is list:
-                        i = 0
-                        new_path = path + f"[{index}]"
-                        new_val = v[index]
-                        while i < len(new_val):
-                            third_path = new_path + f"[{i}]"
-                            x = get_path(new_val[i], values, third_path)
-                            if x:
-                                return x
-                            i += 1
-                    elif type(v[index]) is dict:
-                        i = 0
-                        while i < len(v[index]):
-                            path = path + f"[{i}]"
-                            x = get_path(v[index], values, path)
-                            if x:
-                                return x
-                            i += 1
-                    else:
-                        #know type is list with no nested dicts -> search through list return the path and the item found
-                        if value in values:
-                            path += f"[{index}]"
-                            return [path, value]
+    if type(dict_input) is not dict:
+            if type(dict_input) is dict or type(dict_input) is list:
+                for index, value in enumerate(dict_input):
+                    path = prepath + f"[{i}]"
+                    get_path(value, values, path)
             else:
-                p = get_path(v, values, path)
-                if p:
-                    return p
+                if dict_input in values:
+                    path = prepath + f"[{i}]"
+                    return [path, value]
+                         
+    else:
+        for key, v in dict_input.items():
+            path = prepath + f".{key}"
+            if v in values:
+                return [path, v]
+            elif type(v) is dict or type(v) is list:
+                if type(v) is list:
+                    #have to check if each value in list is not another nested list or dict, enumerate over the objects send lists and dicts through recursively
+                    for index, value in enumerate(v):
+                        if type(v[index]) is list:
+                            #type is list, check every value to ensure no value lower is also a list/dict
+                            i = 0
+                            new_path = path + f"[{index}]"
+                            new_val = v[index]
+                            while i < len(new_val):
+                                third_path = new_path + f"[{i}]"
+                                x = get_path(new_val[i], values, third_path)
+                                if x:
+                                    return x
+                                i += 1
+                        elif type(v[index]) is dict:
+                            #have a nested dictionary, take the values index and submit back through get_path
+                            i = 0
+                            while i < len(v[index]):
+                                new_path = path + f"[{index}]"
+                                x = get_path(v[index], values, new_path)
+                                if x:
+                                    return x
+                                i += 1
+                        else:
+                            #know type is list with no nested dicts -> search through list return the path and the item found
+                            if value in values:
+                                path += f"[{index}]"
+                                return [path, value]
+                else:
+                    p = get_path(v, values, path)
+                    if p:
+                        return p
 
 
 if __name__ == "__main__":
