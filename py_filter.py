@@ -2,7 +2,7 @@ import sys, argparse, os, json
 import yaml
 import os
 from yaml.loader import SafeLoader
-
+import time
 __all__ = ['get_path']
 
 argParser = argparse.ArgumentParser()
@@ -26,6 +26,7 @@ def main(args):
         while(i < len(data)):
             x = get_path(data[i], yaml_data['filters'])
             if x:
+                start_time = time.time()
                 #value was found in dictionary, path and value are held within x, i is the index of the dict w/found values
                 fileName = os.path.join(args.directory, x[1]+".json")
                 with open(fileName, "a+") as outFile:
@@ -33,6 +34,7 @@ def main(args):
                     json.dump(values_found, outFile, indent=6)
                     json.dump(data[i], outFile, indent=6)
             i += 1
+
 
 
 
@@ -77,7 +79,7 @@ def get_path(dict_input, filter_values, prepath=""):
                                     return x
                                 i += 1
                         elif type(value) is dict:
-                            #have a nested dictionary, take the filter_values index and submit back through get_path
+                            #have a nested dictionary, take the found dict value and submit back through get_path
                             x = get_path(value, filter_values, new_path)
                             if x:
                                 return x
