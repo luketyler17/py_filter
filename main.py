@@ -42,11 +42,13 @@ def get_path(dict_input, values, prepath=""):
     if type(dict_input) is not dict:
             if type(dict_input) is dict or type(dict_input) is list:
                 for index, value in enumerate(dict_input):
-                    path = prepath + f"[{i}]"
-                    get_path(value, values, path)
+                    path = prepath + f"[{index}]"
+                    x = get_path(value, values, path)
+                    if x:
+                        return x
             else:
                 if dict_input in values:
-                    path = prepath + f"[{i}]"
+                    path = prepath + f"[{index}]"
                     return [path, value]
                          
     else:

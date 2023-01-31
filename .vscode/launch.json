@@ -7,7 +7,7 @@
         {
             "name": "Python: Current File",
             "type": "python",
-            "args": ["-i", "generated.json", "-y", "config.yaml"],
+            "args": ["-i", "single.json", "-y", "config.yaml"],
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
