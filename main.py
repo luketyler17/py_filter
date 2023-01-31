@@ -25,7 +25,7 @@ def main(args):
             if x:
                 #value was found in dictionary, path and value are held within x, i is the index of the dict w/found values
                 fileName = os.path.join(args.directory, x[1]+".json")
-                with open(fileName, "w+") as outFile:
+                with open(fileName, "a+") as outFile:
                     values_found = {x[0] : x[1]}
                     json.dump(values_found, outFile, indent=6)
                     json.dump(data[i], outFile, indent=6)
@@ -72,12 +72,10 @@ def get_path(dict_input, values, prepath=""):
                         elif type(v[index]) is dict:
                             #have a nested dictionary, take the values index and submit back through get_path
                             i = 0
-                            while i < len(v[index]):
-                                new_path = path + f"[{index}]"
-                                x = get_path(v[index], values, new_path)
-                                if x:
-                                    return x
-                                i += 1
+                            new_path = path + f"[{index}]"
+                            x = get_path(v[index], values, new_path)
+                            if x:
+                                return x
                         else:
                             #know type is list with no nested dicts -> search through list return the path and the item found
                             if value in values:

@@ -1,0 +1,47 @@
+{
+      ".friends[2].name": "Mathis Cleveland"
+}{
+      "_id": "63d7c471c9a277cf5aef859f",
+      "index": 865,
+      "guid": "3d7d6784-8aa9-49e0-93e9-3a811c515d5a",
+      "isActive": false,
+      "balance": "$3,804.77",
+      "picture": "http://placehold.it/32x32",
+      "age": 29,
+      "eyeColor": "brown",
+      "name": "Louisa Hutchinson",
+      "gender": "female",
+      "company": "MARTGO",
+      "email": "louisahutchinson@martgo.com",
+      "phone": "+1 (979) 504-3533",
+      "address": "549 Dumont Avenue, Coyote, Alaska, 246",
+      "about": "Ut mollit exercitation id anim id id sint reprehenderit aliquip dolore sint. Nisi ex incididunt ad elit culpa ad est. Voluptate laboris consectetur minim elit laborum proident sint esse. Veniam anim non tempor consectetur laboris ut incididunt. Consectetur deserunt magna magna consequat ex ullamco. Tempor elit enim aliquip voluptate quis aute aliqua ut pariatur consequat eu pariatur exercitation. Do elit cillum cillum sunt.\r\n",
+      "registered": "2020-06-13T04:27:46 +04:00",
+      "latitude": 67.032406,
+      "longitude": 42.836807,
+      "tags": [
+            "veniam",
+            "amet",
+            "deserunt",
+            "ullamco",
+            "aute",
+            "pariatur",
+            "culpa"
+      ],
+      "friends": [
+            {
+                  "id": 0,
+                  "name": "Hurley Mcpherson"
+            },
+            {
+                  "id": 1,
+                  "name": "Alyssa Barrera"
+            },
+            {
+                  "id": 2,
+                  "name": "Mathis Cleveland"
+            }
+      ],
+      "greeting": "Hello, Louisa Hutchinson! You have 10 unread messages.",
+      "favoriteFruit": "apple"
+}
