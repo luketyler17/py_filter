@@ -1,0 +1,47 @@
+[
+  {
+    "_id": "63d7c47101f9168f9f498f16",
+    "index": 0,
+    "guid": "4cde9f73-ef6a-4a76-925d-81eb274f521d",
+    "isActive": true,
+    "balance": "$3,421.69",
+    "picture": "http://placehold.it/32x32",
+    "age": 21,
+    "eyeColor": "blue",
+    "name": "Farrell Smith",
+    "gender": "male",
+    "company": "ISOLOGIX",
+    "email": "farrellsmith@isologix.com",
+    "phone": "+1 (900) 499-2586",
+    "address": "920 Fillmore Avenue, Wheaton, Louisiana, 4507",
+    "about": "Lorem ut ad deserunt eiusmod ex ad consectetur magna ad consequat ea. Do pariatur consectetur elit exercitation reprehenderit in do. Enim culpa laboris laborum in.\r\n",
+    "registered": "2016-11-09T08:51:38 +05:00",
+    "latitude": 52.490704,
+    "longitude": 135.293175,
+    "tags": [
+      "id",
+      "cillum",
+      "tempor",
+      "ad",
+      "fugiat",
+      "reprehenderit",
+      "dolor"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Lester Snow"
+      },
+      {
+        "id": 1,
+        "name": "Fannie Copeland"
+      },
+      {
+        "id": 2,
+        "name": "Beverly Erickson"
+      }
+    ],
+    "greeting": "Hello, Farrell Smith! You have 2 unread messages.",
+    "favoriteFruit": "strawberry"
+  }
+]
