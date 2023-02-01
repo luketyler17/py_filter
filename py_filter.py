@@ -8,13 +8,17 @@ __all__ = ['get_path']
 argParser = argparse.ArgumentParser()
 argParser.add_argument("-i", "--ifile", help="JSON file to be analyzed", required=True)
 argParser.add_argument("-y", "--yaml", help="YAML Config file that contains keywords to be searched", required=True)
-argParser.add_argument("-d", "--directory", help="Directory to place JSON files in, by default will use current working directory")
+argParser.add_argument("-d", "--directory", help="Directory to place JSON files in, by default will use current working directory, will create directory if directory passed does not exist")
 
 def main(args):
     if not args.directory:
         #make current working directory the output directory if no directory was provided
-        args.directory = os.getcwd()
-
+        directory = os.getcwd()
+        args.directory = os.path.join(directory, "py_filter_output")
+        print(f"\nOutputting all found matches into: {args.directory}\n")
+    if not os.path.exists(args.directory):
+        os.makedirs(args.directory)
+    
     with open(args.yaml) as f:
         #open yaml file for filters
         yaml_data = yaml.load(f, Loader=SafeLoader)
@@ -30,6 +34,7 @@ def main(args):
                 #value was found in dictionary, path and value are held within x, i is the index of the dict w/found values
                 fileName = os.path.join(args.directory, x[1]+".json")
                 with open(fileName, "a+") as outFile:
+                    #appends file if exists inside of target directory
                     values_found = {x[0] : x[1]}
                     json.dump([values_found, data[i]], outFile, indent=6)
             i += 1

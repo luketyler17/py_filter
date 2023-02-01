@@ -31,7 +31,11 @@
           "name": "Lester Snow",
           "book": [
             {
-              "name": "Lacey Buckner"
+              "name": {
+                "find": {
+                  "me": "Lacey Buckner"
+                }
+              }
             },
             {
               "name": "Fannie Copeland"
