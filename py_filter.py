@@ -31,8 +31,7 @@ def main(args):
                 fileName = os.path.join(args.directory, x[1]+".json")
                 with open(fileName, "a+") as outFile:
                     values_found = {x[0] : x[1]}
-                    json.dump(values_found, outFile, indent=6)
-                    json.dump(data[i], outFile, indent=6)
+                    json.dump([values_found, data[i]], outFile, indent=6)
             i += 1
 
 
@@ -42,7 +41,7 @@ def get_path(dict_input, filter_values, prepath=""):
     __doc__ = '''Recursive function that will span all trees in json file to find specific values passed in. Takes 2 arguments to start, a dictionary input & list of values, 
                  prepath is used for the indexing of the item found. This function returns a list - x[0] is the path to the object, x[1] is the filter keyword found'''
     '''
-    Function takes in three values - dictionary, the values to search for, in a list, and a prepath that is set to default to an empty string.
+    Function takes in three values - a dictionary, the values to search for, in a list, and a prepath that is set to default to an empty string.
     Function recursively looks through dictionary for first hit of any value in the value list, when found will return a list with the path in x[0] and the value found in x[1]
     In the main() function -> this will write out the 
     '''
@@ -88,6 +87,7 @@ def get_path(dict_input, filter_values, prepath=""):
                             if value in filter_values:
                                 return [new_path, value]
                 else:
+                    #is a dictionary, access the values by passing dict back into function
                     p = get_path(v, filter_values, path)
                     if p:
                         return p

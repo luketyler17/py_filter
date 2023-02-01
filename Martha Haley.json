@@ -1,0 +1,50 @@
+[
+      {
+            ".friends[0].name": "Martha Haley"
+      },
+      {
+            "_id": "63d7c4713d5ab8a2961d33ba",
+            "index": 787,
+            "guid": "e0f0e7e8-24c1-4556-a192-ce180149c967",
+            "isActive": false,
+            "balance": "$2,213.53",
+            "picture": "http://placehold.it/32x32",
+            "age": 26,
+            "eyeColor": "green",
+            "name": "Clare Le",
+            "gender": "female",
+            "company": "SUREPLEX",
+            "email": "clarele@sureplex.com",
+            "phone": "+1 (962) 524-2737",
+            "address": "740 Bethel Loop, Carlos, Colorado, 7723",
+            "about": "Ut excepteur ex non proident nulla voluptate enim dolor do in duis aliqua. Anim laboris est non pariatur nostrud ea irure nulla velit non voluptate. Ullamco ad commodo ex velit adipisicing. Aliqua dolor ea est anim nostrud duis adipisicing do cupidatat magna tempor reprehenderit.\r\n",
+            "registered": "2016-10-28T10:08:47 +04:00",
+            "latitude": -10.220656,
+            "longitude": 146.85922,
+            "tags": [
+                  "duis",
+                  "enim",
+                  "sunt",
+                  "est",
+                  "sint",
+                  "ad",
+                  "duis"
+            ],
+            "friends": [
+                  {
+                        "id": 0,
+                        "name": "Martha Haley"
+                  },
+                  {
+                        "id": 1,
+                        "name": "Trina Duffy"
+                  },
+                  {
+                        "id": 2,
+                        "name": "Margaret Finch"
+                  }
+            ],
+            "greeting": "Hello, Clare Le! You have 4 unread messages.",
+            "favoriteFruit": "apple"
+      }
+]
