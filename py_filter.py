@@ -30,7 +30,6 @@ def main(args):
         while(i < len(data)):
             x = get_path(data[i], yaml_data['filters'])
             if x:
-                start_time = time.time()
                 #value was found in dictionary, path and value are held within x, i is the index of the dict w/found values
                 fileName = os.path.join(args.directory, x[1]+".json")
                 with open(fileName, "a+") as outFile:
