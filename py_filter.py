@@ -10,13 +10,14 @@ argParser.add_argument("-i", "--ifile", help="JSON file to be analyzed", require
 argParser.add_argument("-y", "--yaml", help="YAML Config file that contains keywords to be searched", required=True)
 argParser.add_argument("-d", "--directory", help="Directory to place JSON files in, by default will use current working directory, will create directory if directory passed does not exist")
 
-def main(args):
+def main(args) -> None:
     if not args.directory:
         #make current working directory the output directory if no directory was provided
         directory = os.getcwd()
         args.directory = os.path.join(directory, "py_filter_output")
         print(f"\nOutputting all found matches into: {args.directory}\n")
     if not os.path.exists(args.directory):
+        #creates directory if it doesn't exist
         os.makedirs(args.directory)
     
     with open(args.yaml) as f:
@@ -34,14 +35,13 @@ def main(args):
                 fileName = os.path.join(args.directory, x[1]+".json")
                 with open(fileName, "a+") as outFile:
                     #appends file if exists inside of target directory
-                    values_found = {x[0] : x[1]}
-                    json.dump([values_found, data[i]], outFile, indent=6)
+                    json.dump([{x[0] : x[1]}, data[i]], outFile, indent=6)
             i += 1
 
 
 
 
-def get_path(dict_input, filter_values, prepath=""):
+def get_path(dict_input: dict | list, filter_values: list, prepath="") -> list:
     __doc__ = '''Recursive function that will span all trees in json file to find specific values passed in. Takes 2 arguments to start, a dictionary input & list of values, 
                  prepath is used for the indexing of the item found. This function returns a list - x[0] is the path to the object, x[1] is the filter keyword found'''
     '''
@@ -92,9 +92,9 @@ def get_path(dict_input, filter_values, prepath=""):
                                 return [new_path, value]
                 else:
                     #is a dictionary, access the values by passing dict back into function
-                    p = get_path(v, filter_values, path)
-                    if p:
-                        return p
+                    x = get_path(v, filter_values, path)
+                    if x:
+                        return x
 
 
 if __name__ == "__main__":
